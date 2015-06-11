@@ -131,6 +131,7 @@ var GameLayer = cc.Layer.extend({
             }, this);
         }
 
+
         this.scheduleUpdate();
         this.schedule(this.scoreCounter, 1);
 
@@ -234,6 +235,130 @@ var GameLayer = cc.Layer.extend({
     },
     removeInactiveUnit:function (dt)
     {
+        var i, selChild, children = this._texOpaqueBatch.children;
+        for (i in children)
+        {
+            selChild = children[i];
+            if (selChild && selChild.active)
+            {
+                selChild.update(dt);
+            }
+        }
+
+        children = this._sparkBatch.children;
+        for (i in children)
+        {
+            selChild = children[i];
+            if (selChild && selChild.active)
+            {
+                selChild.update(dt);
+            }
+        }
+
+        children = this._texTransparentBatch.children;
+        for (i in children)
+        {
+            selChild = children[i];
+            if (selChild && selChild.active)
+            {
+                selChild.update(dt);
+            }
+        }
+    },
+
+    checkIsReborn:function()
+    {
+        var locShip = this._ship;
+        if (MW.LIFE>0 && !locShip.active)
+        {
+            locShip.born();
+        }
+        else if(MW.LIFE<=0 && !locShip.active)
+        {
+            this._state = STATE_GAMEOVER;
+            this._ship = null;
+            this.runAction(cc.sequence(
+                cc.delayTime(0.2),
+                cc.callFunc(this.onGameOver, this)
+            ));
+        }
+
+    },
+
+    updateUI:function()
+    {
+        if (this._tmpScore < MW.SCORE)
+        {
+            this._tmpScore += 1;
+        }
+        this._lbLife.setString(MW.LIFE + '');
+        this.lbScore.setString("Score: " + this._tmpScore);
+    },
+
+    collide:function(a, b)
+    {
+        var ax = a.x;
+        var ay = a.y;
+        var bx = b.x;
+        var by = b.y;
+        if (Math.abs(ax - bx) > MAX_CONTAINT_WIDTH ||
+            Math.abs(ay - by) > MAX_CONTAINT_HEIGHT)
+        {
+            return false;
+        }
+        var aRect = a.collideRect(ax, ay);
+        var bRect = b.collideRect(bx, by);
+        return cc.rectIntersectsRect(aRect, bRect);
+
+    },
+
+    initBackgroung:function()
+    {
+        this._backSky = BackSky.getOrCreate();
+        this._backSkyHeight = this._backSky.height;
+
+        this.moveTileMap();
+        this.schedule(this.moveTileMap, 5);
+    },
+
+    moveTileMap:function()
+    {
+        var backTileMap = BackTileMap.getOrCreate();
+        var ran = Math.random();
+        backTileMap.x = ran * 320;
+        backTileMap.y = winSize.height;
+        var move = cc.moveBy(ran * 2 + 5, cc.p(0, -winSize.height-backTileMap.height));
+        var fun = cc.callFunc(function(){
+            backTileMap.runAction(cc.sequence(move,fun));
+        }, this);
+        backTileMap.runAction(cc.sequence(move, fun));
+    },
+
+    _movingBackground:function(dt)
+    {
+        var movingDist = 16 * dt;
+
+        var locSkyHeight = this._backSkyHeight, locBackSky = this._backSky;
+        var currPosY = locBackSky.y - movingDist;
+        var locBackSkyRe = this._backSkyRe;
+
+        if (locSkyHeight + currPosY <= winSize.height)
+        {
+            if (locBackSkyRe != null)
+            {
+                throw "The memory is leaking at moving background";
+            }
+            locBackSkyRe = this._backSky;
+            this._backSkyRe = this._backSky;
+
+            this._backSy = BackSky.getOrCreate();
+            locBackSky = this._backSky;
+            locBackSky.y = currPosY + locSkyHeight - 5;
+        }else
+        {
+
+        }
+
 
     }
 });
