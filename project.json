@@ -15,6 +15,9 @@
        "src/SysMeun.js",
        "src/GameConfig.js",
        "src/SettingsLayer.js",
-       "src/AboutLayer.js"
+       "src/AboutLayer.js",
+       "src/GameControlMenu.js",
+       "src/GameLayer.js",
+       "src/Explosion.js"
     ]
 }
