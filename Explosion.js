@@ -50,4 +50,32 @@ Explosion.shareExplosion = function(){
     cc.animationCache.addAnimation(animation, "Explosion");
 };
 
+Explosion.getOrCreateExplosion = function(){
+    var selChild = null;
+    for (var j=0; j<MW.CUNTAINER.EXPLOSIONS.length; ++j)
+    {
+        var selChild = MW.CONTAINER.EXPLOSIONS[j];
+        if (selChild.active == false)
+        {
+            selChild.visible = true;
+            selChild.active = true;
+            selChild.play();
+            return selChild;
+        }
+    }
+    selChild = Explosion.create();
+    selChild.play();
+    return selChild;
+
+};
+Explosion.preSet = function(){
+    var explosion = null;
+    for (var i=0; i<6; ++i)
+    {
+        explosion = Explosion.create();
+        explosion.visible = false;
+        explosion.active = false;
+    }
+};
+
 
