@@ -88,4 +88,34 @@ Bullet.getOrCreateBullet = function(bulletSpeed, weaponType, attackMode, zOrder,
     return selChild;
 };
 
+Bullet.creata = function(bulletSpeed, weaponType, attackMode, zOrder, mode){
+    var bullet = new Bullet(bulletSpeed, weaponType, attackMode);
+    g_sharedGameLayer.addBullet(bullet, zOrder, mode);
+    if (mode == MW.UNIT_TAG.PLAYER_BULLET)
+    {
+        MW.CONTAINER.PLAYER_BULLETS.push(bullet);
+    }
+    else
+    {
+        MW.CONTAINER.ENEMY_BULLETS.push(bullet);
+    }
+    return bullet;
+};
+
+Bullet.preSet = function(){
+    var bullet = null;
+    for (var i=0; i<10; ++i)
+    {
+        var bullet = Bullet.create(MW.BULLTE_SPEED.SHIP, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
+        bullet.visible = false;
+        bullet.active = false;
+    }
+    for (var i=0; i<10; ++i)
+    {
+        bullet = Bullet.create(MW.BULLTE_SPEED.ENEMY, "W2.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.ENMEY_BULLET);
+        bullet.visible = false;
+        bullet.active = false;
+    }
+};
+
 
