@@ -351,7 +351,7 @@ var GameLayer = cc.Layer.extend({
             locBackSkyRe = this._backSky;
             this._backSkyRe = this._backSky;
 
-            this._backSy = BackSky.getOrCreate();
+            this._backSky = BackSky.getOrCreate();
             locBackSky = this._backSky;
             locBackSky.y = currPosY + locSkyHeight - 5;
         }
