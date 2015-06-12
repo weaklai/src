@@ -18,8 +18,10 @@ var GameControlMenu = cc.Layer.extend({
         cc.MenuItemFont.setFontSize(25);
         cc.MenuItemFont.setFontName("Arial");
         var systemMenu = new cc.MenuItemFont("Main Menu", this.onSysMenu);
+        var onPause = new cc.MenuItemFont("Pause", this.onPause);
         systemMenu.setColor(cc.color(MW.FONTCOLOR));
-        var menu = new cc.Menu(systemMenu);
+        onPause.setColor(cc.color(MW.FONTCOLOR));
+        var menu = new cc.Menu(systemMenu, onPause);
         menu.x = 0;
         menu.y = 0;
         systemMenu.attr({
@@ -39,5 +41,9 @@ var GameControlMenu = cc.Layer.extend({
         var scene = new cc.Scene();
         scene.addChild(new SysMenu());
         cc.director.runScene(new cc.TransitionFade(1, scene));
+    },
+    onPause:function(pSender)
+    {
+        cc.audioEngine.stopAllEffects();
     }
 });

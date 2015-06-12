@@ -10,7 +10,7 @@
 var Ship = cc.Sprite.extend({
     speed: 220,
     bulletSpeed: MW.BULLET_SPEED.SHIP,
-    HP: 5,
+    HP: 7,
     bulletTypeValue: 1,
     bulletPowerValue: 1,
     throwBombing: false,
@@ -31,7 +31,7 @@ var Ship = cc.Sprite.extend({
         this.y = this.appearPosition.y;
 
         var frame0 = cc.spriteFrameCache.getSpriteFrame("ship01.png");
-        var frame1 = cc.spriteFrameCache.getSprtieFrame("ship02.png");
+        var frame1 = cc.spriteFrameCache.getSpriteFrame("ship02.png");
 
         var animFrames = [];
         animFrames.push(frame0);
@@ -40,7 +40,7 @@ var Ship = cc.Sprite.extend({
         var animation = new cc.Animation(animFrames, 0.1);
         var animate = cc.animate(animation);
         this.runAction(animate.repeatForever());
-        this.schedule(this.shoor, 1 / 6);
+        this.schedule(this.shoot, 1 / 6);
 
         this.initBornSprite();
         this.born();

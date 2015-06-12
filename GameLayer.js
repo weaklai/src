@@ -15,30 +15,30 @@ MAX_CONTAINT_HEIGHT = 40;
 var g_sharedGameLayer;
 
 var GameLayer = cc.Layer.extend({
-    _time:null,
-    _ship:null,
-    _backSky:null,
-    _backSkyHeight:0,
-    _backSkyRe:null,
-    levelManager:null,
-    _tmpScore:0,
-    _isBackSkyReload:false,
-    _isBackTileReload:false,
-    ibScore:null,
-    screenRect:null,
-    explosionAnimation:[],
-    _beginPos:cc.p(0, 0),
-    _state:STATE_PLAYING,
-    _explosions:null,
-    _texOpaqueBatch:null,
-    _texTransparentBatch:null,
+    _time: null,
+    _ship: null,
+    _backSky :null,
+    _backSkyHeight: 0,
+    _backSkyRe: null,
+    levelManager: null,
+    _tmpScore: 0,
+    _isBackSkyReload: false,
+    _isBackTileReload: false,
+    ibScore: null,
+    screenRect: null,
+    explosionAnimation: [],
+    _beginPos: cc.p(0, 0),
+    _state: STATE_PLAYING,
+    _explosions: null,
+    _texOpaqueBatch: null,
+    _texTransparentBatch: null,
 
     ctor:function()
     {
         this._super();
         this.init();
     },
-    init:function ()
+    init:function()
     {
         cc.spriteFrameCache.addSpriteFrames(res.textureOpaquePack_plist);
         cc.spriteFrameCache.addSpriteFrames(res.b01_plist);
