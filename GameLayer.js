@@ -164,7 +164,7 @@ var GameLayer = cc.Layer.extend({
         }
     },
 
-    processEvent:function (event)
+    processEvent:function(event)
     {
         if (this._state == STATE_PLAYING)
         {
@@ -354,11 +354,44 @@ var GameLayer = cc.Layer.extend({
             this._backSy = BackSky.getOrCreate();
             locBackSky = this._backSky;
             locBackSky.y = currPosY + locSkyHeight - 5;
-        }else
+        }
+        else
         {
+            locBackSky.y = currPosY;
+        }
 
+        if (locBackSkyRe)
+        {
+            currPosY = locBackSkyre.y - movingDist;
+            if (currPodY + locSkyHeight < 0)
+            {
+                locBackSkyRe.destroy();
+                this._backSkyRe = null;
+            }
+            else
+            {
+                locBackSkyRe.y = currPosY;
+            }
         }
 
 
+    },
+
+    onGameOver:function()
+    {
+        cc.audioEngine.stopMusic();
+        cc.audioEngine.stopAllEffects();
+        var scene = new Scene();
+        scnen.addChild(new GameOver());
+        cc.director.runScene(new cc.TransitionFade(1, scene));
     }
 });
+
+GameLayer.scene = function()
+{
+    var scene = new cc.Scene();
+    var layer = new GameLayer();
+    scene.addChild(layer, 1);
+    return scene;
+};
+
