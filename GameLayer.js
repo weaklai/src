@@ -85,7 +85,7 @@ var GameLayer = cc.Layer.extend({
             scale: MW.SCALE
         });
         this.lbScore.textAlign = cc.TEXT_ALIGNMENT_RIGHT;
-        this.addChild(this,lbScore, 1000);
+        this.addChild(this.lbScore, 1000);
 
         var life = new cc.Sprite("#ship03.png");
         life.attr({
@@ -93,7 +93,7 @@ var GameLayer = cc.Layer.extend({
             x: 30,
             y: MW.HEIGHT - 30
         });
-        this._textTransparentBatch.addChild(life, 1, 5);
+        this._texTransparentBatch.addChild(life, 1, 5);
 
         this._lbLife = new cc.LabelTTF("0", "Arial", 20);
         this._lbLife.x = 60;
@@ -105,7 +105,7 @@ var GameLayer = cc.Layer.extend({
         this._texTransparentBatch.addChild(this._ship, this._ship.zOrder, MW.UNIT_TAG.PALYER);
 
         cc.spriteFrameCache.addSpriteFrames(res.explosion_plist);
-        var explosionTexture = cc.textureCache.addImage(rex.explosion_png);
+        var explosionTexture = cc.textureCache.addImage(res.explosion_png);
         this._explosions = new cc.SpriteBatchNode(explosionTexture);
         this._explosions.setBlendFunc(cc.SRC_ALPHA, cc.ONE);
         this.addChild(this._explosions);
@@ -126,6 +126,19 @@ var GameLayer = cc.Layer.extend({
                     else
                     {
                         event.getCurrentTarget().processEvent(touches[0]);
+                    }
+                }
+            }, this);
+        }
+
+        if ('mouse' in cc.sys.capabilities)
+        {
+            cc.eventManager.addListener({
+                event: cc.EventListener.MOUSE,
+                onMouseMove: function(event){
+                    if (event.getButton() == cc.EventMouse.BUTTON_LEFT)
+                    {
+                        event.getCurrentTarget().processEvent(event);
                     }
                 }
             }, this);
@@ -157,7 +170,7 @@ var GameLayer = cc.Layer.extend({
 
     scoreCounter:function()
     {
-        if (this._state == STATE_PALEYING)
+        if (this._state == STATE_PLAYING)
         {
             this._time++;
             this._levelManager.loadLevelResource(this._time);
@@ -203,7 +216,7 @@ var GameLayer = cc.Layer.extend({
             }
             for (var j=0; j<MW.CONTAINER.PLAYER_BULLETS.length; ++j)
             {
-                bulletChild = MW.CONTEINER.PLAYER_BULLETS[j];
+                bulletChild = MW.CONTAINER.PLAYER_BULLETS[j];
                 if (bulletChild.active && this.collide(selChild, bulletChild))
                 {
                     bulletChild.hurt();

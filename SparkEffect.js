@@ -16,7 +16,7 @@ var SparkEffect = cc.Class.extend({
     ctor:function()
     {
         this.spark1 = new cc.Sprite("#explode2.png");
-        this.spark2 = new cc.Spriet("#explode3.png");
+        this.spark2 = new cc.Sprite("#explode3.png");
 
     },
 

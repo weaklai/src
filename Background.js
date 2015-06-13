@@ -79,10 +79,10 @@ var BackTileMap = cc.Sprite.extend({
     }
 });
 
-BackTileMap.create = function(){
+BackTileMap.create = function(frameName){
     var backTileMap = new BackTileMap(frameName);
     g_sharedGameLayer.addChild(backTileMap, -9);
-    MW.CONTAINTER.BACKTILEMAPS.push(backTileMap);
+    MW.CONTAINER.BACKTILEMAPS.push(backTileMap);
     return backTileMap;
 };
 

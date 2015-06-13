@@ -17,7 +17,7 @@ var Bullet = cc.Sprite.extend({
     zOrder: 300,
     attackMode: MW.ENEMY_MOVE_TYPE.NORMAL,
     parentType: MW.BULLET_TYPE.PLAYER,
-    ctor:function(bulletSpeed, weaponType, attakMode)
+    ctor:function(bulletSpeed, weaponType, attackMode)
     {
         this._super("#"+weaponType);
 
@@ -58,7 +58,7 @@ Bullet.getOrCreateBullet = function(bulletSpeed, weaponType, attackMode, zOrder,
     var selChild = null;
     if (mode == MW.UNIT_TAG.PLAYER_BULLET)
     {
-        for (var i=0; j<MW.CONTAINER.PLAYER_BULLETS.length; ++j)
+        for (var j=0; j<MW.CONTAINER.PLAYER_BULLETS.length; ++j)
         {
             selChild = MW.CONTAINER.PLAYER_BULLETS[j];
             if (selChild.active = false)
@@ -72,7 +72,7 @@ Bullet.getOrCreateBullet = function(bulletSpeed, weaponType, attackMode, zOrder,
     }
     else
     {
-        for (var i=0; j<MW.CONTAINER.ENEMY_BULLETS.length; ++j)
+        for (var j=0; j<MW.CONTAINER.ENEMY_BULLETS.length; ++j)
         {
             selChild = MW.CONTAINER.ENEMY_BULLETS[j];
             if (selChild.active == false)
@@ -88,7 +88,7 @@ Bullet.getOrCreateBullet = function(bulletSpeed, weaponType, attackMode, zOrder,
     return selChild;
 };
 
-Bullet.creata = function(bulletSpeed, weaponType, attackMode, zOrder, mode){
+Bullet.create = function(bulletSpeed, weaponType, attackMode, zOrder, mode){
     var bullet = new Bullet(bulletSpeed, weaponType, attackMode);
     g_sharedGameLayer.addBullet(bullet, zOrder, mode);
     if (mode == MW.UNIT_TAG.PLAYER_BULLET)
@@ -106,13 +106,13 @@ Bullet.preSet = function(){
     var bullet = null;
     for (var i=0; i<10; ++i)
     {
-        var bullet = Bullet.create(MW.BULLTE_SPEED.SHIP, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
+        var bullet = Bullet.create(MW.BULLET_SPEED.SHIP, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
         bullet.visible = false;
         bullet.active = false;
     }
     for (var i=0; i<10; ++i)
     {
-        bullet = Bullet.create(MW.BULLTE_SPEED.ENEMY, "W2.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.ENMEY_BULLET);
+        bullet = Bullet.create(MW.BULLET_SPEED.ENEMY, "W2.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.ENEMY_BULLET);
         bullet.visible = false;
         bullet.active = false;
     }

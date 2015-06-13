@@ -77,7 +77,7 @@ var LevelManager = cc.Class.extend({
                 {
                     if (deltaTime % selEnemy.ShowTime === 0)
                     {
-                        for (var rIndex=0; rIndex<selEnemy.Type.length; ++rIndex)
+                        for (var rIndex=0; rIndex<selEnemy.Types.length; ++rIndex)
                         {
                             this.addEnemyToGameLayer(selEnemy.Types[rIndex]);
                         }
