@@ -150,7 +150,7 @@ var GameLayer = cc.Layer.extend({
         BackSky.preSet();
         BackTileMap.preSet();
 
-        this.initBackground();
+        this.initBackgroung();
 
         return true;
     },
