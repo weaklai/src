@@ -395,3 +395,22 @@ GameLayer.scene = function()
     return scene;
 };
 
+GameLayer.prototype.addEnemy = function(enemy, z, tag){
+    this._explosions.addChild(enemy, z, tag);
+};
+
+GameLayer.prototype.addExplosions = function(explosion){
+    this._explosions.addChild(explosion);
+};
+
+GameLayer.prototype.addBulletHits = function(hit, zOrder){
+    this._texOpaqueBatch.addChild(hit, zOrder);
+};
+
+GameLayer.prototype.addSpark = function(spark){
+    this._sparkBatch.addChild(spark);
+};
+
+GameLayer.prototype.addBullet = function(bullet, zOrder, mode){
+    this._texOpaqueBatch.addChild(bullet, zOrder, mode);
+};

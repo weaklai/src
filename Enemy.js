@@ -22,7 +22,7 @@ var Enemy = cc.Sprite.extend({
     ctor:function(arg)
     {
         this._super("#"+arg.textureName);
-        if (arg.textureName != "E4.png");
+        if (arg.textureName != "E4.png")
         {
             this.flippedY = true;
         }
@@ -34,7 +34,7 @@ var Enemy = cc.Sprite.extend({
         this.schedule(this.shoot, this.delayTime);
 
     },
-    timeTick: 0,
+    _timeTick: 0,
     update:function(dt)
     {
         var x = this.x;
@@ -43,7 +43,7 @@ var Enemy = cc.Sprite.extend({
         {
             this.active = false;
         }
-        this._timeTice += dt;
+        this._timeTick += dt;
         if (this._timeTick > 0.1)
         {
             this._timeTick = 0;
@@ -70,7 +70,7 @@ var Enemy = cc.Sprite.extend({
         SparkEffect.getOrCreateSparkEffect(this.x, this.y);
         if (MW.SOUND)
         {
-            cc.sudioEngine.playEffect(cc.sys.os == cc.sys.OS_WP8 ||
+            cc.audioEngine.playEffect(cc.sys.os == cc.sys.OS_WP8 ||
                                       cc.sys.os == cc.sys.OS_WINRT ?
                                       res.explodeEffect_wav : res.explodeEffect_mp3);
         }
@@ -131,4 +131,21 @@ Enemy.getOrCreateEnemy = function(arg)
 Enemy.create = function(arg){
     var enemy = new Enemy(arg);
     g_sharedGameLayer.addEnemy(enemy, enemy.zOrder, MW.UNIT_TAG.ENEMY);
-}
+    MW.CONTAINER.ENEMIES.push(enemy);
+    return enemy;
+};
+
+Enemy.preSet = function(){
+    var enemy = null;
+    for (var i=0; i<3; ++i)
+    {
+        for (var j=0; j<EnemyType.length; ++j)
+        {
+            enemy = Enemy.create(EnemyType[j]);
+            enemy.visible = false;
+            enemy.active = false;
+            enemy.stopAllActions();
+            enemy.unscheduleAllCallbacks();
+        }
+    }
+};
