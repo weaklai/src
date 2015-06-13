@@ -7,7 +7,7 @@
  */
 
 
-var GameOver = cc.Layer.extned({
+var GameOver = cc.Layer.extend({
     _ship: null,
     _lbScore: 0,
 
