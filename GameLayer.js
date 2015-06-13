@@ -68,7 +68,7 @@ var GameLayer = cc.Layer.extend({
         this.addChild(this._sparkBatch);
 
         var texTransparent = cc.textureCache.addImage(res.textureTransparentPack_png);
-        this._texTranSparentBatch = new cc.SpriteBatchNode(texTransparent);
+        this._texTransparentBatch = new cc.SpriteBatchNode(texTransparent);
         this.addChild(this._texTransparentBatch);
 
         winSize = cc.director.getWinSize();
