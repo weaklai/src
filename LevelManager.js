@@ -69,7 +69,7 @@ var LevelManager = cc.Class.extend({
                     {
                         for (var tIndex=0; tIndex<selEnemy.Types.length; ++tIndex)
                         {
-                            this.sddEnemyToGameLayer(selEnemy.Types[tIndex]);
+                            this.addEnemyToGameLayer(selEnemy.Types[tIndex]);
                         }
                     }
                 }
@@ -112,7 +112,7 @@ var LevelManager = cc.Class.extend({
                 a0 = cc.moveBy(0.5, offset);
                 a1 = cc.moveBy(1, cc.p(-50 - 100 * Math.random(), 0));
                 var onComplete = cc.callFunc(function(pSender){
-                    var a2 = cc.delayTime(i);
+                    var a2 = cc.delayTime(1);
                     var a3 = cc.moveBy(1, cc.p(100 + 100 * Math.random(), 0));
                     pSender.runAction(cc.sequence(a2, a3, a2.clone(), a3.reverse()).repeatForever());
                 }.bind(addEnemy));

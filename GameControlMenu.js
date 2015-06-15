@@ -30,6 +30,12 @@ var GameControlMenu = cc.Layer.extend({
             anchorX: 0,
             anchorY: 0
         });
+        onPause.attr({
+            x: winSize.width-100,
+            y: 5,
+            anchorX: 0,
+            anchorY: 0
+        });
         this.addChild(menu, 1, 2);
 
         return true;
@@ -44,6 +50,7 @@ var GameControlMenu = cc.Layer.extend({
     },
     onPause:function(pSender)
     {
+        cc.audioEngine.stopAllEffects();
         cc.audioEngine.stopAllEffects();
     }
 });

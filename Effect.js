@@ -62,7 +62,8 @@ var spark = function(x, y, parent, scale, duration){
     three.attr({
         x: x,
         y: y,
-        scale: scale
+        scale: scale,
+        rotation: Math.random() * 360
     });
 
     parent.addSpark(two);

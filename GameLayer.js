@@ -20,7 +20,7 @@ var GameLayer = cc.Layer.extend({
     _backSky :null,
     _backSkyHeight: 0,
     _backSkyRe: null,
-    levelManager: null,
+    _levelManager: null,
     _tmpScore: 0,
     _isBackSkyReload: false,
     _isBackTileReload: false,
@@ -102,7 +102,7 @@ var GameLayer = cc.Layer.extend({
         this.addChild(this._lbLife, 1000);
 
         this._ship = new Ship();
-        this._texTransparentBatch.addChild(this._ship, this._ship.zOrder, MW.UNIT_TAG.PALYER);
+        this._texTransparentBatch.addChild(this._ship, this._ship.zOrder, MW.UNIT_TAG.PLAYER);
 
         cc.spriteFrameCache.addSpriteFrames(res.explosion_plist);
         var explosionTexture = cc.textureCache.addImage(res.explosion_png);
@@ -114,7 +114,7 @@ var GameLayer = cc.Layer.extend({
         if (cc.sys.capabilities.hasOwnProperty('touches'))
         {
             cc.eventManager.addListener({
-                prevTouchID: -1,
+                prevTouchId: -1,
                 event: cc.EventListener.TOUCH_ALL_AT_ONCE,
                 onTouchesMoved:function (touches, event)
                 {
@@ -150,7 +150,9 @@ var GameLayer = cc.Layer.extend({
 
         if (MW.SOUND)
         {
-            cc.audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.bgMusic_wav : res.bgMusic_mp3, true);
+            cc.audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 ||
+                                     cc.sys.os == cc.sys.OS_WINRT ?
+                                     res.bgMusic_wav : res.bgMusic_mp3, true);
         }
 
         g_sharedGameLayer = this;
@@ -204,9 +206,10 @@ var GameLayer = cc.Layer.extend({
     },
     checkIsCollide:function()
     {
-        var selChild, bulletChild;
-
-        var i, locShip = this._ship;
+        var selChild;
+        var bulletChild;
+        var i;
+        var locShip = this._ship;
         for (i=0; i<MW.CONTAINER.ENEMIES.length; ++i)
         {
             selChild = MW.CONTAINER.ENEMIES[i];
@@ -248,7 +251,9 @@ var GameLayer = cc.Layer.extend({
     },
     removeInactiveUnit:function (dt)
     {
-        var i, selChild, children = this._texOpaqueBatch.children;
+        var i;
+        var selChild;
+        var children = this._texOpaqueBatch.children;
         for (i in children)
         {
             selChild = children[i];
@@ -342,7 +347,7 @@ var GameLayer = cc.Layer.extend({
         backTileMap.y = winSize.height;
         var move = cc.moveBy(ran * 2 + 5, cc.p(0, -winSize.height-backTileMap.height));
         var fun = cc.callFunc(function(){
-            backTileMap.runAction(cc.sequence(move,fun));
+           backTileMap.destroy();
         }, this);
         backTileMap.runAction(cc.sequence(move, fun));
     },
@@ -410,7 +415,7 @@ GameLayer.scene = function()
 };
 
 GameLayer.prototype.addEnemy = function(enemy, z, tag){
-    this._explosions.addChild(enemy, z, tag);
+    this._texTransparentBatch.addChild(enemy, z, tag);
 };
 
 GameLayer.prototype.addExplosions = function(explosion){

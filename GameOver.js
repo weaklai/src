@@ -52,6 +52,7 @@ var GameOver = cc.Layer.extend({
         var playAgainDisabled = new cc.Sprite(res.menu_png, cc.rect(singalWidth * 3, singalHeight * 2, singalWidth, singalHeight));
 
         var flare = new cc.Sprite(res.flare_jpg);
+        this.addChild(flare);
         flare.visible = false;
         var playAgain = new cc.MenuItemSprite(playAgainNormal, playAgainSelected, playAgainDisabled, function(){
             flareEffect(flare, this, this.onPlayAgain);
@@ -71,7 +72,9 @@ var GameOver = cc.Layer.extend({
 
         if(MW.SOUND)
         {
-            cc.audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.mainMainMusic_wav : res.mainMainMusic_mp3, true);
+            cc.audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 ||
+                                     cc.sys.os == cc.sys.OS_WINRT ?
+                                     res.mainMainMusic_wav : res.mainMainMusic_mp3, true);
         }
 
         return true;

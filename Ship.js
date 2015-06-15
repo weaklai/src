@@ -142,7 +142,7 @@ var Ship = cc.Sprite.extend({
         this.canBeAttack = false;
         this.bornSprite.scale = 8;
         this.bornSprite.runAction(cc.scaleTo(0.5, 1, 1));
-        this.bornSprite.viible = true;
+        this.bornSprite.visible = true;
         var blinks = cc.blink(3, 9);
         var makeBeAttack = cc.callFunc(function(t){
             t.canBeAttack = true;

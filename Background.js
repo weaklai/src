@@ -48,7 +48,7 @@ BackSky.getOrCreate = function(){
 };
 
 BackSky.preSet = function(){
-    var background = BackSky.create();
+    var background = null;
     for (var i=0; i<2; ++i)
     {
         background = BackSky.create();

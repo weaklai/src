@@ -42,7 +42,7 @@ HitEffect.getOrCreateHitEffect = function(x, y, rotation, scale){
         {
             selChild.visible = true;
             selChild.active = true;
-            selChild.reset(x, y,rotation,scale);
+            selChild.reset(x, y, rotation, scale);
             return selChild;
         }
     }

@@ -18,7 +18,8 @@ var Enemy = cc.Sprite.extend({
     scoreValue: 200,
     zOrder: 1000,
     delayTime: 1+1.2*Math.random(),
-    attackMode: 0,
+    attackMode: MW.ENEMY_MOVE_TYPE.NORMAL,
+    _hurtColorLife: 0,
     ctor:function(arg)
     {
         this._super("#"+arg.textureName);
@@ -53,7 +54,9 @@ var Enemy = cc.Sprite.extend({
             }
         }
 
-        if (x<0 || x>g_sharedGameLayer.screenRect.width || y<0 || y>g_sharedGameLayer.screenRect.height || this.HP <= 0)
+        if (x<0 || x>g_sharedGameLayer.screenRect.width ||
+            y<0 || y>g_sharedGameLayer.screenRect.height ||
+            this.HP <= 0)
         {
             this.active = false;
             this.destroy();
