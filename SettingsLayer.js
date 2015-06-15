@@ -35,9 +35,8 @@ var SettingsLayer = cc.Layer.extend({
 
         cc.MenuItemFont.setFontName("Arial");
         cc.MenuItemFont.setFontSize(26);
-        var item1 = new cc.MenuItemToggle(
-            new cc.MenuItemFont("On"), new cc.MenuItemFont("Off")
-        );
+        var item1 = new cc.MenuItemToggle(new cc.MenuItemFont("On"),
+                                          new cc.MenuItemFont("Off"));
         item1.setCallback(this.onSoundControl);
         item1.setColor(cc.color(MW.FONTCOLOR));
         var state = MW.SOUND ? 0 : 1;
@@ -85,7 +84,9 @@ var SettingsLayer = cc.Layer.extend({
         var audioEngine = cc.audioEngine;
         if (MW.SOUND)
         {
-            audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.mainMainMusic_wav : res.mainMainMusic_mp3);
+            audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 ||
+                                  cc.sys.os == cc.sys.OS_WINRT ?
+                                  res.mainMainMusic_wav : res.mainMainMusic_mp3);
 
         }
         else

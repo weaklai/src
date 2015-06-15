@@ -1,5 +1,7 @@
 
 var SysMenu = cc.Layer.extend({
+    _ship: null,
+
     ctor:function ()
     {
         this._super();
@@ -52,7 +54,10 @@ var SysMenu = cc.Layer.extend({
         var flare = new cc.Sprite(res.flare_jpg);
         this.addChild(flare, 15, 10);
         flare.visible = false;
-        var newGame = new cc.MenuItemSprite(newGameNormal, newGameSelected, newGameDisabled, this.onNewGame, this);
+        var newGame = new cc.MenuItemSprite(newGameNormal, newGameSelected, newGameDisabled, function(){
+            this.onButtonEffect();
+            flareEffect(flare, this, this.onNewGame);
+        }.bind(this));
         var gameSettings = new cc.MenuItemSprite(gameSettingsNormal, gameSettingsSelected, gameSettingsDisabled, this.onSettings, this);
         var about = new cc.MenuItemSprite(aboutNormal, aboutSelected, aboutDisabled, this.onAbout, this);
         newGame.scale = MW.SCALE;
@@ -68,7 +73,9 @@ var SysMenu = cc.Layer.extend({
         if (MW.SOUND)
         {
             cc.audioEngine.setMusicVolume(0.5);
-            cc.audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 || cc.sys.OS_WINRT ? res.mainMainMusic_wav : res.mainMainMusic_mp3, true);
+            cc.audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 ||
+                                     cc.sys.OS_WINRT ?
+                                     res.mainMainMusic_wav : res.mainMainMusic_mp3, true);
         }
         return true;
     },
@@ -76,7 +83,9 @@ var SysMenu = cc.Layer.extend({
     {
         if (MW.SOUND)
         {
-            var s = cc.audioEngine.playEffect(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.buttonEffet_wav : res.buttonEffet_mp3);
+            var s = cc.audioEngine.playEffect(cc.sys.os == cc.sys.OS_WP8 ||
+                                              cc.sys.os == cc.sys.OS_WINRT ?
+                                              res.buttonEffet_wav : res.buttonEffet_mp3);
         }
     },
     onNewGame:function (pSender)

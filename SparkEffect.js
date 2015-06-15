@@ -28,6 +28,13 @@ var SparkEffect = cc.Class.extend({
             scale: this.scale,
             opacity: 255
         });
+        this.spark2.attr({
+            x: x,
+            y: y,
+            scale: this.scale,
+            rotation: Math.random() * 360,
+            opacity:255
+        });
 
         var right = cc.rotateBy(this.duration, 45);
         var scaleBy = cc.scaleBy(this.duration, 3, 3);
