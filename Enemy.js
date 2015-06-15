@@ -84,7 +84,7 @@ var Enemy = cc.Sprite.extend({
     {
         var x = this.x;
         var y = this.y;
-        var b = Bullet.getOrCeateBullet(this.bullerSpeed, "W2.png", this.attackMode, 3000, MW.UNIT_TAG.ENEMY_BULLET);
+        var b = Bullet.getOrCreateBullet(this.bullerSpeed, "W2.png", this.attackMode, 3000, MW.UNIT_TAG.ENEMY_BULLET);
         b.x = x;
         b.y = y - this.height * 0.2;
     },

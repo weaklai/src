@@ -61,7 +61,7 @@ Bullet.getOrCreateBullet = function(bulletSpeed, weaponType, attackMode, zOrder,
         for (var j=0; j<MW.CONTAINER.PLAYER_BULLETS.length; ++j)
         {
             selChild = MW.CONTAINER.PLAYER_BULLETS[j];
-            if (selChild.active = false)
+            if (selChild.active == false)
             {
                 selChild.visible = true;
                 selChild.HP = 1;

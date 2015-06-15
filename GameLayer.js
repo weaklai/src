@@ -351,7 +351,8 @@ var GameLayer = cc.Layer.extend({
     {
         var movingDist = 16 * dt;
 
-        var locSkyHeight = this._backSkyHeight, locBackSky = this._backSky;
+        var locSkyHeight = this._backSkyHeight;
+        var locBackSky = this._backSky;
         var currPosY = locBackSky.y - movingDist;
         var locBackSkyRe = this._backSkyRe;
 
@@ -375,8 +376,8 @@ var GameLayer = cc.Layer.extend({
 
         if (locBackSkyRe)
         {
-            currPosY = locBackSkyre.y - movingDist;
-            if (currPodY + locSkyHeight < 0)
+            currPosY = locBackSkyRe.y - movingDist;
+            if (currPosY + locSkyHeight < 0)
             {
                 locBackSkyRe.destroy();
                 this._backSkyRe = null;
@@ -394,8 +395,8 @@ var GameLayer = cc.Layer.extend({
     {
         cc.audioEngine.stopMusic();
         cc.audioEngine.stopAllEffects();
-        var scene = new Scene();
-        scnen.addChild(new GameOver());
+        var scene = new cc.Scene();
+        scene.addChild(new GameOver());
         cc.director.runScene(new cc.TransitionFade(1, scene));
     }
 });

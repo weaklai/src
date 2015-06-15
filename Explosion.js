@@ -25,7 +25,7 @@ var Explosion = cc.Sprite.extend({
     },
     play:function()
     {
-        this.runAction(cc.sequene(
+        this.runAction(cc.sequence(
             cc.animate(this.animation),
             cc.callFunc(this.destroy, this)
         ));
@@ -52,7 +52,7 @@ Explosion.sharedExplosion = function(){
 
 Explosion.getOrCreateExplosion = function(){
     var selChild = null;
-    for (var j=0; j<MW.CUNTAINER.EXPLOSIONS.length; ++j)
+    for (var j=0; j<MW.CONTAINER.EXPLOSIONS.length; ++j)
     {
         var selChild = MW.CONTAINER.EXPLOSIONS[j];
         if (selChild.active == false)
