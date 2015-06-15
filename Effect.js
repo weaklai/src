@@ -66,7 +66,7 @@ var spark = function(x, y, parent, scale, duration){
     });
 
     parent.addSpark(two);
-    parent.addSpare(three);
+    parent.addSpark(three);
 
     var left = cc.rotateBy(duration, -45);
     var right = cc.rotateBy(duration, 45);

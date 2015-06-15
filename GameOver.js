@@ -34,6 +34,16 @@ var GameOver = cc.Layer.extend({
         });
         this.addChild(logo, 10, 1);
 
+        var logoBack = new cc.Sprite(res.gameOverBack_png);
+        logoBack.attr({
+            anchorX: 0,
+            anchorY: 0,
+            x: 50,
+            y: logo.y - 30,
+            scale: MW.SCALE
+        });
+        this.addChild(logoBack, 9);
+
         var singalHeight = MW.menuHeight;
         var singalWidth = MW.menuWidth;
 
