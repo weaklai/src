@@ -42,7 +42,7 @@ Explosion.sharedExplosion = function(){
     var str = "";
     for (var i=1; i<35; ++i)
     {
-        str = "explosion_"+(i<10 ? ("0"+i) : i)+"png";
+        str = "explosion_"+(i<10 ? ("0"+i) : i)+".png";
         var frame = cc.spriteFrameCache.getSpriteFrame(str);
         animaFrames.push(frame);
     }

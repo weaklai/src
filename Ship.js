@@ -94,7 +94,7 @@ var Ship = cc.Sprite.extend({
         a.y = this.y + 3 + this.height * 0.3;
 
         var b = Bullet.getOrCreateBullet(this.bulletSpeed, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
-        b.x = this.x + offset;
+        b.x = this.x - offset;
         b.y = this.y + 3 + this.height * 0.3;
     },
     destroy:function()

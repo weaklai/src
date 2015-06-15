@@ -26,7 +26,7 @@ var GameControlMenu = cc.Layer.extend({
         menu.y = 0;
         systemMenu.attr({
             x: winSize.width-125,
-            y: 5,
+            y: 35,
             anchorX: 0,
             anchorY: 0
         });
@@ -50,7 +50,7 @@ var GameControlMenu = cc.Layer.extend({
     },
     onPause:function(pSender)
     {
-        cc.audioEngine.stopAllEffects();
+        cc.audioEngine.stopMusic();
         cc.audioEngine.stopAllEffects();
     }
 });
