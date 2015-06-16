@@ -54,9 +54,7 @@ var GameOver = cc.Layer.extend({
         var flare = new cc.Sprite(res.flare_jpg);
         this.addChild(flare);
         flare.visible = false;
-        var playAgain = new cc.MenuItemSprite(playAgainNormal, playAgainSelected, playAgainDisabled, function(){
-            flareEffect(flare, this, this.onPlayAgain);
-        }.bind(this));
+        var playAgain = new cc.MenuItemSprite(playAgainNormal, playAgainSelected, playAgainDisabled, this.onPlayAgain, this);
         playAgain.scale = MW.SCALE;
 
         var menu = new cc.Menu(playAgain);
@@ -86,7 +84,7 @@ var GameOver = cc.Layer.extend({
         var scene = new cc.Scene();
         scene.addChild(new GameLayer());
         scene.addChild(new GameControlMenu());
-        cc.director.runScene(new cc.TransitionFade(1, scene));
+        cc.director.runScene(new cc.TransitionFadeTR(1, scene));
     }
 });
 
