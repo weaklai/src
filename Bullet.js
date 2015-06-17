@@ -104,13 +104,13 @@ Bullet.create = function(bulletSpeed, weaponType, attackMode, zOrder, mode){
 
 Bullet.preSet = function(){
     var bullet = null;
-    for (var i=0; i<10; ++i)
+    for (var i=0; i<100; ++i)
     {
         var bullet = Bullet.create(MW.BULLET_SPEED.SHIP, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
         bullet.visible = false;
         bullet.active = false;
     }
-    for (var i=0; i<10; ++i)
+    for (var i=0; i<100; ++i)
     {
         bullet = Bullet.create(MW.BULLET_SPEED.ENEMY, "W2.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.ENEMY_BULLET);
         bullet.visible = false;

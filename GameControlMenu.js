@@ -57,20 +57,30 @@ var GameControlMenu = cc.Layer.extend({
             var resume = new cc.MenuItemFont("Resume", function(){
                 self.onResume();
             });
+            var NextLevel = new cc.MenuItemFont("Next Level", function(){
+                self.onNextLevel();
+            });
             MainMenu.setColor(cc.color(MW.FONTCOLOR));
             resume.setColor(cc.color(MW.FONTCOLOR));
-            this.systemMenu = new cc.Menu(MainMenu, resume);
+            NextLevel.setColor(cc.color(MW.FONTCOLOR));
+            this.systemMenu = new cc.Menu(MainMenu, resume, NextLevel);
             this.systemMenu.x = 0;
             this.systemMenu.y = 0;
             MainMenu.attr({
-                x: winSize.width / 1.5,
-                y: winSize.height / 1.5,
+                x: winSize.width / 2,
+                y: winSize.height / 2,
                 anchorX: 0,
                 anchorY: 0
             });
             resume.attr({
-                x: winSize.width / 1.5,
-                y: winSize.height / 1.5 - 30,
+                x: winSize.width / 2,
+                y: winSize.height / 2 - 30,
+                anchorX: 0,
+                anchorY: 0
+            });
+            NextLevel.attr({
+                x: winSize.width / 2,
+                y: winSize.height / 2 - 60,
                 anchorX: 0,
                 anchorY: 0
             });
@@ -99,5 +109,10 @@ var GameControlMenu = cc.Layer.extend({
         this.pauseMenu.setEnable = true;
         this.systemMenu.visible = false;
         this.systemMenu.setEnable = false;
+    },
+
+    onNextLevel:function()
+    {
+
     }
 });
