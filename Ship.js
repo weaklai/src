@@ -10,7 +10,7 @@
 var Ship = cc.Sprite.extend({
     speed: 220,
     bulletSpeed: MW.BULLET_SPEED.SHIP,
-    HP: 7,
+    HP: 2,
     bulletTypeValue: 1,
     bulletPowerValue: 1,
     throwBombing: false,
@@ -151,7 +151,7 @@ var Ship = cc.Sprite.extend({
         }. bind(this));
         this.runAction(cc.sequence(cc.delayTime(0.5), blinks, makeBeAttack));
 
-        this.HP = 5;
+        this.HP = 2;
         this._hurtColorLife = 0;
         this.active = true;
 

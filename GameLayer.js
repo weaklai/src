@@ -181,15 +181,18 @@ var GameLayer = cc.Layer.extend({
 
     processEvent:function(event)
     {
-        if (this._state == STATE_PLAYING)
+        if (!cc.director.isPaused())
         {
-            var delta = event.getDelta();
-            var curPos = cc.p(this._ship.x, this._ship.y);
-            curPos = cc.pAdd(curPos, delta);
-            curPos = cc.pClamp(curPos, cc.p(0, 0), cc.p(winSize.width, winSize.height));
-            this._ship.x = curPos.x;
-            this._ship.y = curPos.y;
-            curPos = null;
+            if (this._state == STATE_PLAYING )
+            {
+                var delta = event.getDelta();
+                var curPos = cc.p(this._ship.x, this._ship.y);
+                curPos = cc.pAdd(curPos, delta);
+                curPos = cc.pClamp(curPos, cc.p(0, 0), cc.p(winSize.width, winSize.height));
+                this._ship.x = curPos.x;
+                this._ship.y = curPos.y;
+                curPos = null;
+            }
         }
     },
 
