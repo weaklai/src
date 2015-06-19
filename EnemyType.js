@@ -15,7 +15,7 @@ var EnemyType = [
         HP: 1,
         moveType: MW.ENEMY_MOVE_TYPE.ATTACK,
         attackMode: MW.ENEMY_MOVE_TYPE.NORMAL,
-        scoreValue: 15
+        scoreValue: 5
     },
     {
         type: 1,
@@ -24,7 +24,7 @@ var EnemyType = [
         HP: 2,
         moveType: MW.ENEMY_MOVE_TYPE.ATTACK,
         attackMode: MW.ENEMY_MOVE_TYPE.NORMAL,
-        scoreValue: 40
+        scoreValue: 15
     },
     {
         type: 2,
@@ -33,7 +33,7 @@ var EnemyType = [
         HP: 4,
         moveType: MW.ENEMY_MOVE_TYPE.HORIZONTAL,
         attackMode: MW.ENEMY_MOVE_TYPE.TSUIHIKIDAN,
-        scoreValue: 60
+        scoreValue: 30
     },
     {
         type: 3,
@@ -42,7 +42,7 @@ var EnemyType = [
         HP: 6,
         moveType: MW.ENEMY_MOVE_TYPE.OVERLAP,
         attackMode: MW.ENEMY_MOVE_TYPE.NORMAL,
-        scoreValue: 80
+        scoreValue: 45
     },
     {
         type: 4,
@@ -51,7 +51,7 @@ var EnemyType = [
         HP: 10,
         moveType: MW.ENEMY_MOVE_TYPE.HORIZONTAL,
         attackMode: MW.ENEMY_MOVE_TYPE.TSUIHIKIDAN,
-        scoreValue: 150
+        scoreValue: 70
     },
     {
         type: 5,
@@ -60,6 +60,6 @@ var EnemyType = [
         HP: 15,
         moveType: MW.ENEMY_MOVE_TYPE.HORIZONTAL,
         attackMode: MW.ENEMY_MOVE_TYPE.NORMAL,
-        scoreValue: 200
+        scoreValue: 100
     }
 ];

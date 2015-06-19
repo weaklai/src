@@ -29,6 +29,7 @@ var LevelManager = cc.Class.extend({
             locCurrentLevelEnemies[i].ShowTime = this._minuteToSecond(locCurrentLevelEnemies[i].ShowTime);
         }
     },
+
     _minuteToSecond:function(minuteStr)
     {
         if (!minuteStr)

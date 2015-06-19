@@ -13,47 +13,47 @@ var Level1 = {
         {
             ShowType:"Repeate",
             ShowTime:"00:02",
-            Types:[0,1,2]
+            Types:[0,0,1,1,2,2,3]
         },
         {
             ShowType:"Repeate",
-            ShowTime:"00:05",
+            ShowTime:"00:10",
             Types:[3,4,5]
-        }
-        /*{
+        },
+        {
          ShowType:"Repeate",
-         ShowTime:"00:08",
+         ShowTime:"00:50",
          Types:[0,4,3,5]
          },
          {
-         ShowType:"Once",
-         ShowTime:"00:6",
+         ShowType:"Repeate",
+         ShowTime:"01:15",
          Types:[0,2,4,3]
          },
          {
          ShowType:"Once",
-         ShowTime:"00:16",
+         ShowTime:"02:15",
          Types:[0,2,5,4,3]
          },
          {
          ShowType:"Once",
-         ShowTime:"00:25",
+         ShowTime:"02:45",
          Types:[0,3,5,4,3]
          },
          {
          ShowType:"Once",
-         ShowTime:"00:35",
+         ShowTime:"05:00",
          Types:[4,5,3,1,3]
          },
          {
-         ShowType:"Once",
-         ShowTime:"00:50",
+         ShowType:"Repeate",
+         ShowTime:"05:30",
          Types:[0,3,2,1,0,3]
          },
          {
          ShowType:"Once",
-         ShowTime:"01:15",
+         ShowTime:"03:00",
          Types:[4,5,2,1,0]
-         }*/
+         }
     ]
 };

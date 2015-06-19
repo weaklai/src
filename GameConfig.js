@@ -76,7 +76,7 @@ MW.CONTAINER = {
 };
 
 MW.BULLET_SPEED = {
-    ENEMY:-200,
+    ENEMY:-300,
     SHIP:900
 };
 
