@@ -113,6 +113,14 @@ var GameControlMenu = cc.Layer.extend({
 
     onNextLevel:function()
     {
-
+        GameLayer._time = null;
+        //LevelManager._currentLevel = ;
+        cc.audioEngine.resumeAllEffects();
+        cc.audioEngine.resumeMusic();
+        cc.director.resume();
+        this.pauseMenu.visible = true;
+        this.pauseMenu.setEnable = true;
+        this.systemMenu.visible = false;
+        this.systemMenu.setEnable = false;
     }
 });
