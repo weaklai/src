@@ -22,7 +22,7 @@ var Level1 = {
         },
         {
             ShowType: "Repeate",
-            ShowTime: "00:50",
+            ShowTime: "00:15",
             Types: [0,4,3,5]
          },
          {
@@ -58,7 +58,7 @@ var Level2 = {
         },
         {
             ShowType: "Repeate",
-            ShowTime: "00:30",
+            ShowTime: "00:15",
             Types: [4,5]
         },
         {
@@ -84,22 +84,22 @@ var Level3 = {
     enemies: [
         {
             ShowType: "Repeate",
-            ShowTime: "00:05",
+            ShowTime: "00:02",
             Types: [1,1,3,3,3]
         },
         {
             ShowType: "Repeate",
-            ShowTime: "00:08",
+            ShowTime: "00:05",
             Types: [0,0,0,2,2]
         },
         {
             ShowType: "Repeate",
-            ShowTime: "00:15",
+            ShowTime: "00:10",
             Types: [4,4,5,5]
         },
         {
             ShowType: "Repeate",
-            ShowTime: "00:45",
+            ShowTime: "00:25",
             Types: [1,1,1,2,2,2,5,5]
         },
         {

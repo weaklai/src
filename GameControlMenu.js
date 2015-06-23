@@ -67,19 +67,19 @@ var GameControlMenu = cc.Layer.extend({
             this.systemMenu.x = 0;
             this.systemMenu.y = 0;
             MainMenu.attr({
-                x: winSize.width / 2,
+                x: winSize.width / 2 - 60,
                 y: winSize.height / 2,
                 anchorX: 0,
                 anchorY: 0
             });
             resume.attr({
-                x: winSize.width / 2,
+                x: winSize.width / 2 - 60,
                 y: winSize.height / 2 - 30,
                 anchorX: 0,
                 anchorY: 0
             });
             NextLevel.attr({
-                x: winSize.width / 2,
+                x: winSize.width / 2 - 60,
                 y: winSize.height / 2 - 60,
                 anchorX: 0,
                 anchorY: 0
@@ -113,7 +113,7 @@ var GameControlMenu = cc.Layer.extend({
 
     onNextLevel:function()
     {
-        GameLayer._time = null;
+
         //LevelManager._currentLevel = ;
         cc.audioEngine.resumeAllEffects();
         cc.audioEngine.resumeMusic();
@@ -122,5 +122,6 @@ var GameControlMenu = cc.Layer.extend({
         this.pauseMenu.setEnable = true;
         this.systemMenu.visible = false;
         this.systemMenu.setEnable = false;
+        GameLayer.resetTime();
     }
 });

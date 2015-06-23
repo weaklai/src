@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+//
 
 STATE_PLAYING = 0;
 STATE_GAMEOVER = 1;
@@ -176,6 +177,7 @@ var GameLayer = cc.Layer.extend({
         {
             this._time++;
             this._levelManager.loadLevelResource(this._time);
+            console.log(this._time);
         }
     },
 
@@ -406,6 +408,11 @@ var GameLayer = cc.Layer.extend({
         var scene = new cc.Scene();
         scene.addChild(new GameOver());
         cc.director.runScene(new cc.TransitionFade(1, scene));
+    },
+
+    resetTime:function()
+    {
+        this._time = null;
     }
 });
 

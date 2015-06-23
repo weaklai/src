@@ -16,7 +16,7 @@ var LevelManager = cc.Class.extend({
         {
             throw"gameLayer must be non-nil";
         }
-        this._currentLevel = Level3;
+        this._currentLevel = Level1;
         this._gameLayer = gameLayer;
         this.setLevel(this._currentLevel);
     },
