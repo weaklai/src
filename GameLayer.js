@@ -209,6 +209,7 @@ var GameLayer = cc.Layer.extend({
             this._movingBackground(dt);
         }
     },
+
     checkIsCollide:function()
     {
         var selChild;
@@ -408,13 +409,11 @@ var GameLayer = cc.Layer.extend({
         var scene = new cc.Scene();
         scene.addChild(new GameOver());
         cc.director.runScene(new cc.TransitionFade(1, scene));
-    },
-
-    resetTime:function()
-    {
-        this._time = null;
     }
+
 });
+
+
 
 GameLayer.scene = function()
 {

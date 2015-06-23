@@ -122,6 +122,6 @@ var GameControlMenu = cc.Layer.extend({
         this.pauseMenu.setEnable = true;
         this.systemMenu.visible = false;
         this.systemMenu.setEnable = false;
-        GameLayer.resetTime();
+
     }
 });
